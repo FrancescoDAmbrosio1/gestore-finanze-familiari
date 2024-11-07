@@ -48,8 +48,11 @@ public class Utente {
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Role> roles;
 
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "utente")
 	public List<Spesa> spese;
+	
+	@OneToMany(mappedBy = "utente")
+	public List<Introito> introiti;
 
 	public Integer getId() {
 		return id;
@@ -113,6 +116,14 @@ public class Utente {
 
 	public void setSpese(List<Spesa> spese) {
 		this.spese = spese;
+	}
+
+	public List<Introito> getIntroiti() {
+		return introiti;
+	}
+
+	public void setIntroiti(List<Introito> introiti) {
+		this.introiti = introiti;
 	}
 	
 	

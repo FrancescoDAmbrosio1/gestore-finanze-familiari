@@ -1,5 +1,7 @@
 package it.myBudget.model;
 
+import java.util.List;
+
 //import javax.validation.constraints.NotBlank;
 
 import jakarta.persistence.Column;
@@ -8,11 +10,12 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "categorie")
 
-public class Categoria {
+public class CategoriaSpesa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +27,9 @@ public class Categoria {
 	
 	@Column(name = "url-icona", nullable = false, unique = true)
 	private String icona;
+	
+	@OneToMany(mappedBy = "categoriaSpesa")
+	public List<Spesa> spese;
 
 	public Integer getId() {
 		return id;
@@ -47,6 +53,14 @@ public class Categoria {
 
 	public void setIcona(String icona) {
 		this.icona = icona;
+	}
+
+	public List<Spesa> getSpese() {
+		return spese;
+	}
+
+	public void setSpese(List<Spesa> spese) {
+		this.spese = spese;
 	}
 	
 	
