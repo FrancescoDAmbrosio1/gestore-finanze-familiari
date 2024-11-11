@@ -42,6 +42,9 @@ public class Spesa {
 	@Column(name = "spesa_fissa")
 	private boolean spesaFissa;
 	
+	@Column(name = "note", nullable = true)
+	private String note;
+	
 //	@NotNull(message = "La scelta dell'operatore è obbligatoria")
 	@ManyToOne
 	@JoinColumn(name = "user_id", nullable = false)
@@ -91,6 +94,14 @@ public class Spesa {
 
 	public Utente getUtente() {
 		return utente;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	public void setUtente(Utente utente) {

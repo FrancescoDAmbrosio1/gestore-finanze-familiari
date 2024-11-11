@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body id="dashboard">
+    <nav class="navbar navbar-expand-lg bgCustomYellow" data-bs-theme="dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler bgCustomOrange " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse p-2 " id="navbarTogglerDemo01">
+            <img class="rounded-2 m-2" src="/img/cecriesco-icona-neroSuBianco.PNG" alt="Logo paperella" width="60" height="60">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-color-custom" aria-current="page" href="#">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-color-custom" th:href="@{/spese}">Spese</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-color-custom" href="#">Risparmi</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-color-custom" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Bilancio familiare
+                </a>
+                <ul class="dropdown-menu bgCustomYellow">
+                  <li><a class="dropdown-item text-color-custom" href="#">Rendiconto Generale</a></li>
+                  <li><a class="dropdown-item text-color-custom" href="#">Rendiconto Mensile</a></li>
+                  <li><a class="dropdown-item text-color-custom" href="#">F.A.Q.</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex align-items-center" role="search">
+              <img class="rounded-circle " src="/img/avatar.jpg" alt="aaa" style="width: 50px; border: 2px solid grey; margin-right: 10px;">
+              <button class="btn text-color-custom bgCustomOrange border-custom-black p-1" type="submit" style="height: fit-content;">LogOut</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+      <!-- Dashboard -->
+    <div class="container py-4">
+        <div class="row flex-lg-row-reverse">
+            <aside class="col-lg-7">
+              <!-- prossime spese -->
+              <div class="card mb-4">
+                <div class="d-flex justify-content-between p-4">
+                  <h3>Prossime Spese</h3>
+                  <button type="button" class="btn bgCustomOrange border-custom-black">Aggiungi Spesa</button>
+                </div>
+                <div class="border m-2 rounded">
+                  <div class="card-body">
+                    <table class="table table-striped">
+                      <thead>
+                          <tr>
+                            <th class="col-7" scope="col"></th>
+                            <th class="col-2 d-none d-md-table-cell" scope="col">Scadenza</th>
+                            <th class="col-3" scope="col">
+                                <div class="row justify-content-center">Azioni</div>
+                            </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Affitto mese di novembre</td>
+                          <td class="d-none d-md-table-cell">10/10/2024</td>
+                          <td class="py-1">
+                            <div class="d-flex justify-content-center gap-1">
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-pencil-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-trash3-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-check-square-fill"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Pasti bambino scuola</td>
+                          <td class="d-none d-md-table-cell">-</td>
+                          <td class="py-1">
+                            <div class="d-flex justify-content-center gap-1">
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-pencil-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-trash3-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-check-square-fill"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Mensile palestra</td>
+                          <td class="d-none d-md-table-cell">18/10/2024</td>
+                          <td class="py-1">
+                            <div class="d-flex justify-content-center gap-1">
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-pencil-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-trash3-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-check-square-fill"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Ricarica telefonica</td>
+                          <td class="d-none d-md-table-cell">-</td>
+                          <td class="py-1">
+                            <div class="d-flex justify-content-center gap-1">
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-pencil-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-trash3-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-check-square-fill"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Il codice Da Vinci</td>
+                          <td class="d-none d-md-table-cell">-</td>
+                          <td class="py-1">
+                            <div class="d-flex justify-content-center gap-1">
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-pencil-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-trash3-fill"></i>
+                              </button>
+                              <button type="button" class="btn btn-outline-secondary px-2">
+                                <i class="bi-check-square-fill"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- /prossime spese -->
+              <!-- grafico -->
+              <div class="card mb-4 p-2">
+                  <div class="row">
+                    <div class="col-4 d-flex align-items-center justify-content-center">
+                      <img src="/img/pie-img.png" alt="aaa" style="width: 100%;">
+                    </div>
+                    <div class="col-8 d-flex align-items-center text-size-pie-chart">
+                      <ul style="width: 90%;">
+                        <li class="mb-2">
+                          <div class="row align-items-center" style="background-color: lightgreen ; border-radius: 20px; padding-left: 5px;        padding-right: 10px; padding-top: 3px; padding-bottom: 3px;">
+                            <div class="col-7">Disponibilità</div>
+                            <div class="col-5" style="background-color: white; border-radius: 20px; color: green; padding: 1px; text-align: center;"> 
+                              € 650,50</div>
+                          </div>
+                        </li>
+                        <li class="mb-2">
+                          <div class="row align-items-center" style="background-color: rgb(44, 151, 251) ; border-radius: 20px; padding-left: 5px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px;">
+                            <div class="col-7">Spese fisse</div>
+                            <div class="col-5" style="background-color: white; border-radius: 20px; color: red; padding: 1px; text-align: center;"> 
+                              - € 650,50</div>
+                          </div>
+                        </li>
+                        <li class="mb-2">
+                          <div class="row align-items-center" style="background-color: orange ; border-radius: 20px; padding-left: 5px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px;">
+                            <div class="col-7">Risparmi</div>
+                            <div class="col-5" style="background-color: white; border-radius: 20px; color: green; padding: 1px; text-align: center;"> 
+                              € 650,50</div>
+                          </div>
+                        </li>
+                        <li class="mb-2">
+                          <div class="row align-items-center" style="background-color:#775DD0 ; border-radius: 20px; padding-left: 5px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px;">
+                            <div class="col-7">Spese varie</div>
+                            <div class="col-5" style="background-color: white; border-radius: 20px; color: red; padding: 1px; text-align: center;"> 
+                              - € 650,50</div>
+                          </div>
+                        </li>
+                        <li class="mb-2"></li>
+                          <div class="row align-items-center" style="background-color:rgb(247, 68, 68) ; border-radius: 20px; padding-left: 5px; padding-right: 10px; padding-top: 3px; padding-bottom: 3px;">
+                            <div class="col-7">Prossime spese</div>
+                            <div class="col-5" style="background-color: white; border-radius: 20px; color: red; padding: 1px; text-align: center;"> 
+                              - € 650,50</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>   
+              </div>
+              <!-- /grafico -->
+            </aside>
+          <main class="col-lg-5 pb-2">
+           <div class="card">
+            <div class="d-flex justify-content-between p-4">
+              <h3>Resoconto spese effettuate</h3>
+            </div>
+            <!-- dashboard table -->
+             <div class="border m-2 rounded">
+              <div class="card-body">
+                <table class="table table-striped">
+                  <thead>
+                      <tr>
+                        <th class="col-2" scope="col">
+                            <div class="row justify-content-center"></div>
+                        </th>
+                        <th class="col-6" scope="col"></th>
+                        <th class="col-4" scope="col"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-cart"></i>
+                        </div>
+                      </td>
+                      <td>Spesa alimentare</td>
+                      <td> € 320,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-basket2"></i>
+                        </div>
+                      </td>
+                      <td>Spesa detersivi</td>
+                      <!-- <td class="d-none d-md-table-cell"> € 120,00</td> -->
+                      <td> € 120,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-bus-front"></i>
+                        </div>
+                      </td>
+                      <td>Viaggi</td>
+                      <td> € 450,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-clipboard-heart"></i>
+                        </div>
+                      </td>
+                      <td>Cura personale</td>
+                      <td> € 70,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-house"></i>
+                        </div>
+                      </td>
+                      <td>Affitto/Mutuo</td>
+                      <td> € 550,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Bollette</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Mangiare fuori</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Salute</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Carburante</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Hobby e svago</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Bar</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Abbonamenti</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Starsky</td>
+                      <td> € 250,00</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                            <i class="bi-droplet-half"></i>
+                        </div>
+                      </td>
+                      <td>Abbonamenti</td>
+                      <td> € 250,00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+             </div>
+             <!-- /dashboard table -->
+           </div>
+          </main>
+        </div>
+    </div>
+      <!-- /Dashboard -->
+
+ <!-- END BODY -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
