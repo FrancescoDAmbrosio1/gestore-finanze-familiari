@@ -3,7 +3,6 @@ package it.myBudget.model;
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotBlank;
-//import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotNull;
 
 import jakarta.persistence.Column;
@@ -28,7 +27,7 @@ public class Spesa {
 	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@NotBlank(message = "L'inserimento dell'importo è obbligatorio")
+	@NotNull(message = "L'inserimento dell'importo è obbligatorio")
 	@Column(name = "importo", nullable = false)
 	private Double importo;
 	
