@@ -52,7 +52,7 @@
 					border-radius: 6px;">
 			<div>
 				<h3 class="m-2">
-					Ricerca spese...
+					Ricerca categorie...
 				</h3>
 				<form class="p-3 w-auto" role="search" method:"get" th:object="${Spesa}" th:action="@{/ricerca}">
 					<div class="row " style="border: 1px solid lightgray;
@@ -88,11 +88,15 @@
               <!-- prossime spese -->
               <div class="card mb-4 " style="background-color:rgba(255, 166, 0, 0.8);">
                 <div class="d-flex justify-content-between p-4">
-                  <h3>Elenco spese...</h3>
-                  <button type="button" class="btn bgCustomOrange border-custom-black"
-				  	data-bs-toggle="modal" data-bs-target="#modale-spesa"
-					>
-					Aggiungi Spesa</button>
+                  <h3>Elenco Categorie...</h3>
+				  <div class="d-flex justify-content-end gap-1">
+	                  <button type="button" class="btn bgCustomOrange border-custom-black"
+					  	data-bs-toggle="modal" data-bs-target="#modale-categoria-spesa">
+						Aggiungi categoria di spesa</button>
+					  <button type="button" class="btn bgCustomOrange border-custom-black"
+						data-bs-toggle="modal" data-bs-target="#modale-categoria-risparmio">
+						Aggiungi categoria di introito</button>
+				  </div>
                 </div>
                 <div class="border m-2 rounded">
                   <div class="card-body" style="background-color: white;">
@@ -144,21 +148,21 @@
 	  
 	 <!-- Modale -->
 	 <form id="nuova-spesa-form"
-	 	th:object="${spesa}" 
-	 	th:action="@{/spese/create}"
+	 	th:object="${categoriaSpesa}" 
+	 	th:action="@{/categorie/spese/create}"
 	 	method="post">
-	 	<div class="modal fade" id="modale-spesa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	 	<div class="modal fade" id="modale-categoria-spesa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	 	<div class="modal-dialog">
 	 			<div class="modal-content">
 	 						<div class="modal-header" style="background-color:rgba(255, 166, 0, 0.8)">
-	 							 <h1 class="modal-title fs-5" id="exampleModalLabel">Inserimento nuova spesa</h1>
+	 							 <h1 class="modal-title fs-5" id="exampleModalLabel">Inserimento nuova categoria di spesa</h1>
 	 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	 						</div>
 							<div class="modal-body" style="background-color: rgb(255, 255, 0, 0.5);">
 								<div class="mb-3">
-									<label for="spesa-nome-input" class="form-label">Nome della spesa</label>
+									<label for="categoria-spesa-nome-input" class="form-label">Nome della categoria</label>
 									<input type="text" class="form-control" 
-										id="spesa-nome-input" placeholder="Inserisci il Nome della spesa..."
+										id="categoria-spesa-nome-input" placeholder="Inserisci il Nome della categoria..."
 										th:field="*{nome}" 	th:errorClass="is-invalid">
 										<div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
 											<ul>
@@ -170,50 +174,25 @@
 								</div>
 								<div class="row mb-3">
 								<div class="col-6">
-									<label for="spesa-importo-input" class="form-label">Importo</label>
-									<input type="number" class="form-control" 
-										id="spesa-importo-input" placeholder="Inserisci impimporto..."
-										th:field="*{importo}" th:errorClass="is-invalid">
-										<div th:if="${#fields.hasErrors('importo')}" class="invalid-feedback">
+									<label for="categoria-spesa-icona-input" class="form-label">Icona</label>
+									<input type="url" class="form-control" 
+										id="categoria-spesa-icona-input" placeholder="Inserisci url..."
+										th:field="*{icona}" th:errorClass="is-invalid">
+										<div th:if="${#fields.hasErrors('icona')}" class="invalid-feedback">
 											<ul>
-												<li th:each="err : ${#fields.errors('importo')}" 
+												<li th:each="err : ${#fields.errors('icona')}" 
 													th:text="${err}">
 												</li>
 											</ul>
 										</div>
 								</div>
 								<div class="col-6">
-									<label for="spesa-data-input" class="form-label">Data operazione</label>
+									<label for="categoria-spesa-note-input" class="form-label">Note</label>
 									<input type="date" class="form-control" 
-										id="spesa-data-input" placeholder="Inserisci impimporto..."
+										id="categoria-spesa-note-input" placeholder="Inserisci il testo della nota..."
 										th:field="*{data}" th:errorClass="is-invalid">
-										<div th:if="${#fields.hasErrors('data')}" class="invalid-feedback">
-											<ul>
-												<li th:each="err : ${#fields.errors('data')}" 
-													th:text="${err}">
-												</li>
-											</ul>
-										</div>
+
 								</div>									
-								</div>
-								<div class="dropdown">
-									<label for="InputOperatore" class="form-label">Seleziona operatore</label>
-									<input type="text" class="form-control" data-bs-toggle="dropdown" aria-expanded="false"
-										id="InputOperatore" placeholder="Seleziona l'operatore...">
-										<ul class="dropdown-menu" style="max-height: 200px; overflow-y: scroll; padding: 5px;">
-											<li	class="list-group-item" th:each="utente : ${userList}" >
-												<input type="radio" name="utente" th:value="${utente.id}" th:field="*{utente}">
-												<label th:text="|${utente.cognome} ${utente.nome}|"></label>
-											</li>
-										</ul>
-									</input>
-								</div>
-								<div th:if="${#fields.hasErrors('utente')}" class="invalid-feedback">
-									<ul>
-										<li th:each="err : ${#fields.errors('utente')}" 
-											th:text="${err}">
-										</li>
-									</ul>
 								</div>
 							</div>		
 	 					<div class="modal-footer" style="background-color:whitesmoke">

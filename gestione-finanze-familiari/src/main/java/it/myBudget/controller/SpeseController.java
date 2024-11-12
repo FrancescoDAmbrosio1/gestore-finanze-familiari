@@ -37,13 +37,13 @@ public class SpeseController {
 	}
 	
 	
-	@GetMapping("/create")
-	public String creaNuovaSpesa(Model model) {
-		
+//	@GetMapping("/create")
+//	public String creaNuovaSpesa(Model model) {
+//		
 //		model.addAttribute("spesa", new Spesa());
-		
-		return "/spese/generale-spese";
-	}
+//		
+//		return "/spese/generale-spese";
+//	}
 	
 	@PostMapping("/create")
 	public String salvaNuovaSpesa(@Valid @ModelAttribute("spesa") Spesa spesa, Model model,

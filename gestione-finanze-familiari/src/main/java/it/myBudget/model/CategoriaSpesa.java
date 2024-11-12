@@ -2,6 +2,8 @@ package it.myBudget.model;
 
 import java.util.List;
 
+import javax.validation.constraints.NotBlank;
+
 //import javax.validation.constraints.NotBlank;
 
 import jakarta.persistence.Column;
@@ -21,12 +23,16 @@ public class CategoriaSpesa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-//	@NotBlank(message = "L'inserimento del nome della categoria è obbligatorio")
+	@NotBlank(message = "L'inserimento del nome della categoria è obbligatorio")
 	@Column(name = "nome", nullable = false, unique = true)
 	private String nome;
 	
+	@NotBlank(message = "L'inserimento dell'icona è obbligatorio")
 	@Column(name = "url-icona", nullable = false, unique = true)
 	private String icona;
+	
+	@Column(name = "note")
+	private String note;
 	
 	@OneToMany(mappedBy = "categoriaSpesa")
 	public List<Spesa> spese;
@@ -61,6 +67,14 @@ public class CategoriaSpesa {
 
 	public void setSpese(List<Spesa> spese) {
 		this.spese = spese;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 	
 	
