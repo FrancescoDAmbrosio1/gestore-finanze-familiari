@@ -3,6 +3,7 @@ package it.myBudget.model;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 //import javax.validation.constraints.NotBlank;
 
@@ -12,6 +13,8 @@ import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -27,16 +30,26 @@ public class CategoriaSpesa {
 	@Column(name = "nome", nullable = false, unique = true)
 	private String nome;
 	
-	@NotBlank(message = "L'inserimento dell'icona è obbligatorio")
-	@Column(name = "url-icona", nullable = false, unique = true)
-	private String icona;
+//	@NotBlank(message = "L'inserimento dell'icona è obbligatorio")
+//	@Column(name = "url-icona", nullable = false, unique = true)
+//	private String icona;
 	
+	@NotBlank(message = "L'inserimento della descrizione della categoria è obbligatorio")
 	@Column(name = "note")
 	private String note;
+	
+	@NotNull(message ="Specificare il tipo di categoria")
+	@Column(name = "tipo")
+	private String tipo;
 	
 	@OneToMany(mappedBy = "categoriaSpesa")
 	public List<Spesa> spese;
 
+	@NotNull(message = "La scelta del'icona è obbligatoria")
+	@ManyToOne
+	@JoinColumn(name = "icona_id")
+	private Icona icona;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -53,11 +66,21 @@ public class CategoriaSpesa {
 		this.nome = nome;
 	}
 
-	public String getIcona() {
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public Icona getIcona() {
 		return icona;
 	}
 
-	public void setIcona(String icona) {
+	public void setIcona(Icona icona) {
 		this.icona = icona;
 	}
 

@@ -1,7 +1,7 @@
 ul{list-style-type: none;}
 
 #dashboard{
-    background-color: whitesmoke;
+    background-color:#CDFBF1;
 }
 
 .btn:hover{
@@ -10,7 +10,7 @@ ul{list-style-type: none;}
 }
 
 .bgCustomYellow{
-    background-color: rgb(255, 255, 0)
+    background-color:#4F46E6
 }
 
 .text-color-custom{

@@ -28,6 +28,9 @@ private String nome;
 @Column(name = "url_icona", nullable = false, unique = true)
 private String iconaUrlIntroiti;
 
+@Column(name = "note")
+private String note;
+
 @OneToMany(mappedBy = "categoriaIntroito")
 public List<Introito> introiti;
 
@@ -61,6 +64,14 @@ public List<Introito> getIntroiti() {
 
 public void setIntroiti(List<Introito> introiti) {
 	this.introiti = introiti;
+}
+
+public String getNote() {
+	return note;
+}
+
+public void setNote(String note) {
+	this.note = note;
 }
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>MyBudget - Categorie</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -21,13 +21,13 @@
                 <a class="nav-link text-color-custom" th:href="@{/main/dashboard}">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-color-custom" aria-current="page" href="#">Spese</a>
+                <a class="nav-link text-color-custom" aria-current="page" th:href="@{/spese}">Spese</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-color-custom" href="#">Risparmi</a>
               </li>
 			  <li class="nav-item">
-			  	<a class="nav-link text-color-custom" th:href="@{/categorie}">Categorie</a>
+			  	<a class="nav-link text-color-custom" href="#">Categorie</a>
 			  </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-color-custom" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +48,7 @@
         </div>
     </nav>
 	<section class="py-4">
-		<div class="container" style="background-color:rgba(255, 166, 0, 0.8); border: 1px solid lightgray;
+		<div class="container" style="background-color:#A78BFA; border: 1px solid lightgray;
 					border-radius: 6px;">
 			<div>
 				<h3 class="m-2">
@@ -82,84 +82,83 @@
 			</div>
 		</div>
 	</section>  
-	    <!-- Dashboard -->
-    <div class="container py-4">
-        <div class="row">
-              <!-- prossime spese -->
-              <div class="card mb-4 " style="background-color:rgba(255, 166, 0, 0.8);">
-                <div class="d-flex justify-content-between p-4">
-                  <h3>Elenco Categorie...</h3>
-				  <div class="d-flex justify-content-end gap-1">
-	                  <button type="button" class="btn bgCustomOrange border-custom-black"
-					  	data-bs-toggle="modal" data-bs-target="#modale-categoria-spesa">
-						Aggiungi categoria di spesa</button>
-					  <button type="button" class="btn bgCustomOrange border-custom-black"
-						data-bs-toggle="modal" data-bs-target="#modale-categoria-risparmio">
-						Aggiungi categoria di introito</button>
-				  </div>
-                </div>
-                <div class="border m-2 rounded">
-                  <div class="card-body" style="background-color: white;">
-                    <table class="table table-striped text-center text-custom-table" 
-						style="vertical-align:middle;">
-                      <thead>
-                          <tr>
-							<th class="col-1" scope="col"></th>
-                            <th class="col-2 d-none d-md-table-cell" scope="col">Categoria</th>
-                            <th class="col-4" scope="col">Nome</th>
-                            <th class="col-3 col-md-2" scope="col">Data</th>
-							<th class="col-3 col-md-2" scope="col">Importo</th>
-							<th class="col-1"></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          	<td><i class="bi-droplet-half"></i></td>
-							<td class="d-none d-md-table-cell">Utenze</td>	
-							<td>Bolletta gas</td>
-							<td>13/11/2024</td>
-							<td>€ 103,20</td>
-							<td>
-								<div class="d-flex justify-content-center gap-1">
-									<button type="button" class="btn bgCustomOrange border-custom-black">
-										<i class="bi-search"></i>
-									</button>
-									<!--
-									<button type="button" class="btn btn-outline-secondary">
-								    	<i class="bi-pencil-fill"></i>
-								    </button>
-								    <button type="button" class="btn btn-outline-secondary">
-								        <i class="bi-trash3-fill"></i>
-								    </button>
-									-->
-								</div>
-							</td>                         
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-          </main>
-        </div>
-    </div>
+	    <!-- elenco -->
+	<section>
+	    <div class="container py-4">
+	        <div class="row">
+	              <!-- prossime spese -->
+	              <div class="card mb-4 " style="background-color: #A78BFA">
+	                <div class="d-flex justify-content-between p-4">
+	                  <h3>Elenco Categorie...</h3>
+					  <div class="d-flex justify-content-end">
+		                  <button type="button" class="btn bgCustomOrange border-custom-black"
+						  	data-bs-toggle="modal" data-bs-target="#modale-categoria-spesa">
+							Aggiungi nuova categoria</button>
+					  </div>
+	                </div>
+	                <div class="border m-2 rounded">
+	                  <div class="card-body" style="background-color: white;">
+	                    <table class="table table-striped text-center text-custom-table" 
+							style="vertical-align:middle;">
+	                      <thead>
+	                          <tr>
+								<th class="col-1" scope="col"></th>
+	                            <th class="col-2 d-none d-md-table-cell" scope="col">Categoria</th>
+	                            <th class="col-4" scope="col">Nome</th>
+	                            <th class="col-3 col-md-2" scope="col">Data</th>
+								<th class="col-3 col-md-2" scope="col">Importo</th>
+								<th class="col-1"></th>
+	                          </tr>
+	                      </thead>
+	                      <tbody>
+	                        <tr>
+	                          	<td><i class="bi-droplet-half"></i></td>
+								<td class="d-none d-md-table-cell">Utenze</td>	
+								<td>Bolletta gas</td>
+								<td>13/11/2024</td>
+								<td>€ 103,20</td>
+								<td>
+									<div class="d-flex justify-content-center gap-1">
+										<button type="button" class="btn bgCustomOrange border-custom-black">
+											<i class="bi-search"></i>
+										</button>
+										<!--
+										<button type="button" class="btn btn-outline-secondary">
+									    	<i class="bi-pencil-fill"></i>
+									    </button>
+									    <button type="button" class="btn btn-outline-secondary">
+									        <i class="bi-trash3-fill"></i>
+									    </button>
+										-->
+									</div>
+								</td>                         
+	                        </tr>
+	                      </tbody>
+	                    </table>
+	                  </div>
+	                </div>
+	              </div>
+	          </main>
+	        </div>
+	    </div>
+	</section>	
       <!-- /Dashboard -->
 
 	  
 	 <!-- Modale -->
-	 <form id="nuova-spesa-form"
+	 <form id="nuova-categoria-spese-form"
 	 	th:object="${categoriaSpesa}" 
 	 	th:action="@{/categorie/spese/create}"
 	 	method="post">
 	 	<div class="modal fade" id="modale-categoria-spesa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	 	<div class="modal-dialog">
 	 			<div class="modal-content">
-	 						<div class="modal-header" style="background-color:rgba(255, 166, 0, 0.8)">
+	 						<div class="modal-header" style="background-color:#4F46E6">
 	 							 <h1 class="modal-title fs-5" id="exampleModalLabel">Inserimento nuova categoria di spesa</h1>
 	 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	 						</div>
-							<div class="modal-body" style="background-color: rgb(255, 255, 0, 0.5);">
-								<div class="mb-3">
+							<div class="modal-body" style="background-color: #A78BFA">
+								<div class="col-12 mb-3">
 									<label for="categoria-spesa-nome-input" class="form-label">Nome della categoria</label>
 									<input type="text" class="form-control" 
 										id="categoria-spesa-nome-input" placeholder="Inserisci il Nome della categoria..."
@@ -172,28 +171,62 @@
 											</ul>
 										</div>
 								</div>
-								<div class="row mb-3">
-								<div class="col-6">
-									<label for="categoria-spesa-icona-input" class="form-label">Icona</label>
-									<input type="url" class="form-control" 
-										id="categoria-spesa-icona-input" placeholder="Inserisci url..."
-										th:field="*{icona}" th:errorClass="is-invalid">
-										<div th:if="${#fields.hasErrors('icona')}" class="invalid-feedback">
-											<ul>
-												<li th:each="err : ${#fields.errors('icona')}" 
-													th:text="${err}">
-												</li>
-											</ul>
-										</div>
+								<div class="col-12 mb-3">
+									<label for="categoria-spesa-note-input" class="form-label">Descrizione</label>
+									<textarea class="form-control" 
+										id="categoria-spesa-note-input" placeholder="Inserisci una descrizione della categoria..."
+										th:field="*{note}" 	th:errorClass="is-invalid">
+									</textarea>
+									<div th:if="${#fields.hasErrors('note')}" class="invalid-feedback">
+										<ul>
+											<li th:each="err : ${#fields.errors('note')}" 
+												th:text="${err}">
+											</li>
+										</ul>
+									</div>
+								</div>	
+								<div class="col-12 mb-3">
+									<label for="categoria-spesa-icona-select" class="form-label">Seleziona l'icona</label>
+									<input type="text" class="form-control" data-bs-toggle="dropdown" aria-expanded="false" 
+											placeholder="Seleziona l'icona..." 
+											id="categoria-spesa-icona-select" >
+											<div class=" dropdown-menu" style="max-height: 15vh; overflow-y: scroll; padding: 5px; width: 93%;">
+													<span th:each="icona : ${iconaList}">
+														<button type="radio"  name="icona" 
+																class="col-1 mb-4" style="margin: 3px;"
+																th:value="${icona.id}" th:field="*{icona}" th:errorClass="is-invalid">
+															<img th:src="${icona.getUrl()}">
+														</button>													
+													</span>																							
+											</div>
+											<div th:if="${#fields.hasErrors('icona')}" class="invalid-feedback">
+												<ul>
+													<li th:each="err : ${#fields.errors('icona')}" 
+														th:text="${err}">
+													</li>
+												</ul>
+											</div>
 								</div>
-								<div class="col-6">
-									<label for="categoria-spesa-note-input" class="form-label">Note</label>
-									<input type="date" class="form-control" 
-										id="categoria-spesa-note-input" placeholder="Inserisci il testo della nota..."
-										th:field="*{data}" th:errorClass="is-invalid">
-
-								</div>									
-								</div>
+								<div class="col-12 mb-3 d-flex justify-content-between">
+									<div class="col-6">
+									  <input type="radio" name="spesa-radio" id="radio-categoria-spesa" value="spesa" th:field="*{tipo}" 
+									  th:errorClass="is-invalid">
+									  <label for="radio-categoria-spesa">Categoria di spesa</label>
+									</div>
+									<div class="col-6">
+									  <input  type="radio" name="introito-radio" id="radio-categoria-introito" value="introito" th:field="*{tipo}"
+									  th:errorClass="is-invalid">
+									  <label  for="radio-categoria-introito">Categoria di introito</label>										
+									</div>
+									</span>
+									<div th:if="${#fields.hasErrors('tipo')}" class="invalid-feedback">
+										<ul>
+											<li th:each="err : ${#fields.errors('tipo')}" 
+												th:text="${err}">
+											</li>
+										</ul>
+									</div>
+								</div>								
 							</div>		
 	 					<div class="modal-footer" style="background-color:whitesmoke">
 	 						<button type="submit" class="btn bgCustomOrange border-custom-black">
@@ -203,6 +236,7 @@
 	 			</div>
 	 		</div>
 	 		</form>
+		
  <!-- END BODY -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
