@@ -2,14 +2,15 @@ package it.myBudget.model;
 
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
-//import javax.validation.constraints.NotBlank;
+
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,7 +27,7 @@ public class CategoriaSpesa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotBlank(message = "L'inserimento del nome della categoria è obbligatorio")
+	@NotBlank(message = "Inserimento del nome della categoria obbligatorio")
 	@Column(name = "nome", nullable = false, unique = true)
 	private String nome;
 	
@@ -34,7 +35,7 @@ public class CategoriaSpesa {
 //	@Column(name = "url-icona", nullable = false, unique = true)
 //	private String icona;
 	
-	@NotBlank(message = "L'inserimento della descrizione della categoria è obbligatorio")
+	@NotBlank(message = "Inserimento della descrizione della categoria obbligatorio")
 	@Column(name = "note")
 	private String note;
 	

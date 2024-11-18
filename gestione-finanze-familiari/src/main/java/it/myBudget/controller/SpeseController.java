@@ -1,6 +1,5 @@
 package it.myBudget.controller;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import it.myBudget.model.Spesa;
 import it.myBudget.repository.SpesaRepository;
 import it.myBudget.repository.UtenteRepository;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/spese")

@@ -2,12 +2,11 @@ package it.myBudget.model;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,7 +30,7 @@ public class Spesa {
 	@Column(name = "importo", nullable = false)
 	private Double importo;
 	
-	@NotBlank(message = "L'inserimento della data è obbligatorio")
+//	@NotBlank(message = "L'inserimento della data è obbligatorio")
 	@Column(name = "data")
 	private LocalDate data;
 	

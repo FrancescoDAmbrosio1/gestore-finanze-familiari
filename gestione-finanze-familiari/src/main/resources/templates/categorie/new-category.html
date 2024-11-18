@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBudget - Categorie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body id="dashboard">
+    <nav class="navbar navbar-expand-lg bgCustomYellow" data-bs-theme="dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler bgCustomOrange " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse p-2 " id="navbarTogglerDemo01">
+            <img class="rounded-2 m-2" src="/img/cecriesco-icona-neroSuBianco.PNG" alt="Logo paperella" width="60" height="60">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-color-custom" th:href="@{/main/dashboard}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-color-custom" aria-current="page" th:href="@{/spese}">Spese</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-color-custom" href="#">Risparmi</a>
+              </li>
+			  <li class="nav-item">
+			  	<a class="nav-link text-color-custom" href="#">Categorie</a>
+			  </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-color-custom" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Bilancio familiare
+                </a>
+                <ul class="dropdown-menu bgCustomYellow">
+                  <li><a class="dropdown-item text-color-custom" href="#">Rendiconto Generale</a></li>
+                  <li><a class="dropdown-item text-color-custom" href="#">Rendiconto Mensile</a></li>
+                  <li><a class="dropdown-item text-color-custom" href="#">F.A.Q.</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex align-items-center" role="search">
+              <img class="rounded-circle " src="/img/avatar.jpg" alt="aaa" style="width: 50px; border: 2px solid grey; margin-right: 10px;">
+              <button class="btn text-color-custom bgCustomOrange border-custom-black p-1" type="submit" style="height: fit-content;">LogOut</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+	    <!-- elenco -->
+
+	  
+	 <!-- Modale -->
+	 <form id="nuova-categoria-spese-form"
+	 	th:object="${categoriaSpesa}" 
+	 	th:action="@{/categorie/create}"
+	 	method="post">
+	 			<div class="card mx-auto mt-5 p-4" style="width: 70vw; background-color: whitesmoke;">
+	 						<div  style="background-color:whitesmoke">
+	 							 <h1 class="modal-title fs-5" id="exampleModalLabel">Inserimento nuova categoria di spesa</h1>
+	 								
+	 						</div>
+							<div class="card-body	bgCustomYellow mb-3">
+								<div class="col-12 mb-3">
+									<label for="categoria-spesa-nome-input" class="form-label">Nome della categoria</label>
+									<input type="text" class="form-control" 
+										id="categoria-spesa-nome-input" placeholder="Inserisci il Nome della categoria..."
+										th:field="*{nome}" 	th:errorClass="is-invalid">
+										<div th:if="${#fields.hasErrors('nome')}" class="invalid-feedback">
+											<ul>
+												<li th:each="err : ${#fields.errors('nome')}" 
+													th:text="${err}">
+												</li>
+											</ul>
+										</div>
+								</div>
+								<div class="col-12 mb-3">
+									<label for="categoria-spesa-note-input" class="form-label">Descrizione</label>
+									<textarea class="form-control" 
+										id="categoria-spesa-note-input" placeholder="Inserisci una descrizione della categoria..."
+										th:field="*{note}" 	th:errorClass="is-invalid">
+									</textarea>
+									<div th:if="${#fields.hasErrors('note')}" class="invalid-feedback">
+										<ul>
+											<li th:each="err : ${#fields.errors('note')}" 
+												th:text="${err}">
+											</li>
+										</ul>
+									</div>
+								</div>	
+								<div class="col-12 mb-3">
+									<label for="categoria-spesa-icona-select" class="form-label">Seleziona l'icona</label>
+									<input type="text" class="form-control" data-bs-toggle="dropdown" aria-expanded="false" 
+											placeholder="Seleziona l'icona..." 
+											id="categoria-spesa-icona-select" >
+											<div class=" dropdown-menu" style="max-height: 15vh; overflow-y: scroll; padding: 5px; width: 93%;">
+													<span th:each="icona : ${iconaList}">
+														<input type="radio"  name="icona" 
+																class="col-1 mb-4" style="margin: 3px;"
+																th:value="${icona.id}" th:field="*{icona}" th:errorClass="is-invalid">
+															<img th:src="${icona.getUrl()}">
+														</input>													
+													</span>																							
+											</div>
+											<div th:if="${#fields.hasErrors('icona')}" class="invalid-feedback">
+												<ul>
+													<li th:each="err : ${#fields.errors('icona')}" 
+														th:text="${err}">
+													</li>
+												</ul>
+											</div>
+								</div>
+								<div class="col-12 mb-3 d-flex justify-content-between">
+									<div class="col-6">
+									  <input type="radio" name="spesa-radio" id="radio-categoria-spesa" value="spesa" th:field="*{tipo}" 
+									  th:errorClass="is-invalid">
+									  <label for="radio-categoria-spesa">Categoria di spesa</label>
+									</div>
+									<div class="col-6">
+									  <input  type="radio" name="introito-radio" id="radio-categoria-introito" value="introito" th:field="*{tipo}"
+									  th:errorClass="is-invalid">
+									  <label  for="radio-categoria-introito">Categoria di introito</label>										
+									</div>
+									</span>
+									<div th:if="${#fields.hasErrors('tipo')}" class="invalid-feedback">
+										<ul>
+											<li th:each="err : ${#fields.errors('tipo')}" 
+												th:text="${err}">
+											</li>
+										</ul>
+									</div>
+								</div>								
+							</div>		
+	 					<div class="d-flex justify-content-center gap-2 p-2" style="background-color:whitesmoke">
+	 						<button type="submit" class="btn bgCustomOrange border-custom-black">
+	 								Salva</button>
+							<a class="btn bgCustomOrange border-custom-black" th:href="@{/categorie}">Annulla</a>
+	 					</div>
+	 				</div>
+	 			</div>
+	 		</div>
+	 		</form>
+		
+ <!-- END BODY -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

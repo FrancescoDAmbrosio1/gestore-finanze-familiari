@@ -1,7 +1,7 @@
 ul{list-style-type: none;}
 
 #dashboard{
-    background-color:#CDFBF1;
+    background-color:#FDF4FF;
 }
 
 .btn:hover{
@@ -9,8 +9,10 @@ ul{list-style-type: none;}
     border: 1px solid black;
 }
 
-.bgCustomYellow{
-    background-color:#4F46E6
+.bgCustom{
+    background-color:#4F46E6;
+    background-image: linear-gradient(to bottom right, #4F46E6, #A78BFA);
+    
 }
 
 .text-color-custom{

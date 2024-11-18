@@ -2,11 +2,10 @@ package it.myBudget.model;
 
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
