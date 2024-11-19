@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -47,8 +48,6 @@ public class CategorieController {
 		model.addAttribute("listaCategorie", categoriaSpesaRepository.findAll());
 		
 		model.addAttribute("categoriaSpesa", new CategoriaSpesa());
-		
-//		model.addAttribute("categoriaIntroiti", new CategoriaIntroiti());
 		
 		model.addAttribute("iconaList", iconaRepository.findAll());
 		
@@ -120,5 +119,15 @@ public class CategorieController {
 		return "redirect:/categorie";
 	}
 	
+	
+	@GetMapping("/show/{id}")
+	public String dettaglioCategoria(@PathVariable("id") Integer categoriaId, Model model) {
+		
+			
+			model.addAttribute("categoriaSpesa", categoriaSpesaRepository.getReferenceById(categoriaId));
+			
+		
+		return "categorie/generale-categorie";
+	}
 
 }

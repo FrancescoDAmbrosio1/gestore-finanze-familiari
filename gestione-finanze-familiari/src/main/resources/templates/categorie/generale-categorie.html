@@ -122,55 +122,61 @@
 					  </div>
 	                </div>
 	                <div class="border m-2 rounded">
-	                  <div class="card-body" style="background-color: white;">
-	                    <!--
+	                  <div class="card-body p-0" style="background-color: white;">
 						<table id="table-1" class="table table-striped align-items-center"
-							th:unless="${list.isEmpty()}">
+							th:unless="${listaCategorie.isEmpty()}">
 							<thead>
 								<tr>
-									<th class="col-2"> Cognome </th>
-									<th class="col-2"> Nome </th>
-									<th class="col-2"> Matricola </th>
-									<th class="col-2"> Stato </th>
-									<th class="col-2"> N° ticket</th>
-									<th class="col-2" style="text-align: center;"> Azioni</th>
+									<th class="col-2"></th>
+									<th class="col-5">Nome</th>
+									<th class="col-2">Tipo</th>
+									<th class="col-3" style="text-align: center;"></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr th:each="categoriaSpesa : ${listaCategorie}">
+									<td class="text-center" style="vertical-align: middle;">
+										<img th:src="${categoriaSpesa.icona.getUrl()}">
+									</td>
 									<td>
 										<span th:text="${categoriaSpesa.getNome()}"></span> 
 									</td>
 									<td>
-										<span th:text=" ${user.getNote()}"></span>
+										<span th:text="${categoriaSpesa.getTipo()}"></span>
 									</td>
-									<td>
-										<span th:text="${user.Tipo()}"></span>
-									</td>
-									<td>
-										<span th:text="${user.getIcona()}"></span>
-									</td>
-									<td class="d-flex justify-content-center gap-2">
-										<a class="btn btn-primary" style="color: whitesmoke;"
-											th:href="@{|/user/show/${user.id}|}"><i class="bi bi-search"></i>
+									<td class="d-flex justify-content-center gap-1">
+										<button type="button" class="btn bgCustomOrange border-custom-black"
+											  	data-bs-toggle="modal" data-bs-target="#modale-dettaglio-categoria"
+												th:href="@{|/categorie/show/${categoriaSpesa.id}|}">
+											<i class="bi bi-info-square"></i>
+										</button>
+								<!--
+										<button type="button" class="btn bgCustomOrange border-custom-black p-2" 
+												data-bs-container="body" data-bs-toggle="popover" 
+												data-bs-placement="bottom" 
+												data-bs-content="ciao">
+											
+										</button>
+										<a class="btn bgCustomOrange border-custom-black p-2"
+											th:href="@{|/categorie/edit/${categoriaSpesa.id}|}"><i class="bi bi-pencil"></i>
 										</a>
-										<form th:action="@{'/user/delete/{id}'(id=${user.id})}"
+										<form th:action="@{'/categorie/delete/{id}'(id=${categoriaSpesa.id})}"
 											method="post">
-											<button class="btn btn-danger" type="submit" id="submitButton"
-												style=" color: whitesmoke;"
-												th:data-confirm-delete="|Sei sicuro di voler cancellare l'Operatore?|"
+											<button class="btn border-custom-black p-2" type="submit" id="submitButton"
+												style="background-color: red; color: whitesmoke;"
+												th:data-confirm-delete="|Sei sicuro di voler cancellare la categoria?|"
 												onclick="if(!confirm(this.getAttribute('data-confirm-delete'))) return false">
 												<i class="bi bi-trash"></i>
 											</button>
 										</form>
-									</td>
+								-->
+									</td>	
 								</tr>
 							</tbody>
 						</table>	
-			<div th:if="${list.isEmpty()}">
-				<span> Non sono presenti Operatori nel DataBase </span>
+			<div th:if="${listaCategorie.isEmpty()}">
+				<span> Non sono presenti Categorie nel DataBase </span>
 			</div>
-						-->		
 	                  </div>
 	                </div>
 	              </div>
@@ -185,7 +191,7 @@
 	 	th:action="@{/categorie/create}"
 	 	method="post">
 	 	<div class="modal fade" id="modale-categoria-spesa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	 	<div class="modal-dialog">
+	 	<div class="modal-dialog modal-dialog-centered">
 	 			<div class="modal-content">
 	 						<div class="modal-header" style="background-color:white">
 	 							 <h1 class="modal-title fs-5" id="exampleModalLabel">Inserimento nuova categoria di spesa</h1>
@@ -276,7 +282,28 @@
 	 		</div>
 	 </form>
 		
- 
+ 	<!-- Modale dettaglio categoria -->
+	<div th:object="${categoriaSpesa}"
+		th:action="@{|/categorie/show/${categoriaSpesa.id}|}">
+		<div class="modal fade" id="modale-dettaglio-categoria" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog 	modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="staticBackdropLabel" 
+					th:text="|Dettaglio della categoria ${categoriaSpesa.getId()}|"></h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+	</div>
    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
