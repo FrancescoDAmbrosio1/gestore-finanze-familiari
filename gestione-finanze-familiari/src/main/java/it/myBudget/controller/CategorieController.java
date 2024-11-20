@@ -1,9 +1,6 @@
 package it.myBudget.controller;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import it.myBudget.model.CategoriaIntroiti;
 import it.myBudget.model.CategoriaSpesa;
 import it.myBudget.repository.CategoriaIntroitiRepository;
 import it.myBudget.repository.CategoriaSpesaRepository;
@@ -120,14 +116,28 @@ public class CategorieController {
 	}
 	
 	
-	@GetMapping("/show/{id}")
-	public String dettaglioCategoria(@PathVariable("id") Integer categoriaId, Model model) {
-		
+	@GetMapping("/edit/{id}")
+	public String editCategoria(@PathVariable("id") Integer categoriaId, Model model) {
 			
 			model.addAttribute("categoriaSpesa", categoriaSpesaRepository.getReferenceById(categoriaId));
 			
+			model.addAttribute("iconaList", iconaRepository.findAll());
 		
-		return "categorie/generale-categorie";
+		return "categorie/edit";
+	}
+	
+	@PostMapping("/edit/{id}")
+	public String updateCategoria(@Valid @ModelAttribute("categoriaSpesa") CategoriaSpesa categoriaSpesa,
+			BindingResult bindingResult, Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			
+			return "/categorie/edit";
+		}
+		
+		categoriaSpesaRepository.save(categoriaSpesa);
+		
+		return "redirect:/categorie";
 	}
 
 }
